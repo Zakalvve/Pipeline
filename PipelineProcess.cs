@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pipeline
+﻿namespace Pipeline
 {
-	internal class PipelineProcess<T> : IPipelineProcess<T> 
+	class PipelineProcess<T> : IPipelineProcess<T> 
 	{
 		public PipelineProcess(Func<T,Func<T>,T> process) : this(process, null) { }
 
@@ -23,10 +17,10 @@ namespace Pipeline
 		public Func<T,Func<T>,T> Process { get; set; }
 
 		//execute this process
-		public T Execute(T args) {
-			return Process(args,() => {
-				if (_nextProcess == null) return args;
-				return _nextProcess.Execute(args);
+		public T Execute(T data) {
+			return Process(data,() => {
+				if (_nextProcess == null) return data;
+				return _nextProcess.Execute(data);
 			});
 		}
 
