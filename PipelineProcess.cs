@@ -14,7 +14,7 @@
 		protected IPipelineProcess<T>? _nextProcess;
 
 		//the developer defined process logic
-		public Func<T,Func<T>,T> Process { get; set; }
+		protected Func<T,Func<T>,T> Process { get; set; }
 
 		//execute this process
 		public T Execute(T data) {

@@ -6,6 +6,5 @@
 	{
 		public void setNextProcess(IPipelineProcess<T> next);
 		public T Execute(T data);
-		public Func<T, Func<T>, T> Process { get; set; }
 	}
 }
